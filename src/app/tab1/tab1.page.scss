@@ -1,18 +1,21 @@
 /************ Le header ************/
 #connexion{
     padding: 1px 20px 1px 20px;
-    border: 2px solid red;
-    color: red;
+    --ion-background-color: red;
     border-radius: 50px;
+    font-size: 12px;
 }
 
 #inscription{
     margin-top: 5px;
     padding: 1px 20px 1px 20px;
-    border: 2px solid red;
-    background: rgba(255, 0, 0, 0.685);
-    color: white;
-    border-radius: 50px;
+    --ion-background-color: red;
+    font-size: 12px;
+    --ion-color: red;
+}
+
+ion-title{
+    padding: 0px;
 }
 
 
@@ -22,9 +25,11 @@ ion-header img{
 }
 
 #filtre{
-    width: 100%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 30px;
     color: red;
-    font-size: 22px;
+    font-size: 12px;
     font-weight: bold;
 }
 

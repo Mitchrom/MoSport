@@ -9,6 +9,14 @@ const routes: Routes = [
   {
     path: 'filtre',
     loadChildren: () => import('./filtre/filtre.module').then( m => m.FiltrePageModule)
+  },
+  {
+    path: 'connexion',
+    loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
+  },
+  {
+    path: 'inscription',
+    loadChildren: () => import('./inscription/inscription.module').then( m => m.InscriptionPageModule)
   }
 ];
 @NgModule({

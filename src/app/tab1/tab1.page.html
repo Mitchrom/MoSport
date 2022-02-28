@@ -3,8 +3,8 @@
     <ion-row>
       <ion-col>
         <ion-row>
-          <ion-buttons id="connexion">Connexion</ion-buttons>
-          <ion-buttons id="inscription">Inscription</ion-buttons>
+          <ion-button shape="round" [routerLink]="['/connexion']" id="connexion">Connexion</ion-button>
+          <ion-button shape="round" [routerLink]="['/inscription']" id="inscription">Inscription</ion-button>
         </ion-row>
       </ion-col>
 
@@ -15,7 +15,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-buttons [routerLink]="['/tabs/filtre']" id="filtre" slot="end">Filtre</ion-buttons>
+        <ion-button shape="round" [routerLink]="['/filtre']" id="filtre">Filtre</ion-button>
       </ion-col>
     </ion-row>
 
@@ -24,7 +24,7 @@
 
 <ion-content [fullscreen]="true">
 
-  <div class="publication">
+  <div class="publication" *ngFor="let article of articles.data">
     <!-- "ion-lines=none" pour enlever la line -->
     <ion-item lines="none" no-padding>
       <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
@@ -32,10 +32,10 @@
       <ion-avatar slot="start">
         <img src="../../assets/ballonbasket.png">
       </ion-avatar>
-      <ion-label>Basket Ball</ion-label>
+      <ion-label>{{article.attributes?.titre}}</ion-label>
     </ion-item>
 
-    <img class="post_img" src="../../assets/shapes.svg">
+    <img class="post_img" src="http://localhost:1337{{article.attributes?.image.data[0].attributes.url}}">
 
     <div class="flex-button">
       <div>
@@ -45,333 +45,34 @@
       </div>
       <ion-icon name="bookmark"></ion-icon>
     </div>
+    <div class="hidden">
+      <ion-accordion-group>
+        <ion-accordion value="colors">
+          <ion-item slot="header">
+            <h1>Lire l'article</h1>
+          </ion-item>
 
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Basket Ball</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/ballonfoot.png">
-      </ion-avatar>
-      <ion-label>Football</ion-label>
-    </ion-item>
+          <ion-list slot="content">
+            <div>
+              {{article.attributes?.description}}
+            </div>
 
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
+          </ion-list>
+        </ion-accordion>
+      </ion-accordion-group>
     </div>
-
     <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Football</b> Lorem ipsum dolor sit amet
+    <p class="insta-text"><b>Basket ball</b> Lorem ipsum dolor sit amet
       consectetur adipisicing elit. Nostrum harum assumenda, odit,
       explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
       odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
+
+
   </div>
   <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/ballonhandball.png">
-      </ion-avatar>
-      <ion-label>Handball</ion-label>
-    </ion-item>
 
-    <img class="post_img" src="../../assets/shapes.svg">
 
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
 
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Handball</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/divers-removebg.png">
-      </ion-avatar>
-      <ion-label>Divers</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Divers</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/golf-removebg.png">
-      </ion-avatar>
-      <ion-label>Golf</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Golf</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/tennis-removebg.png">
-      </ion-avatar>
-      <ion-label>Tennis</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Tennis</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/baseballe-removebg.png">
-      </ion-avatar>
-      <ion-label>Baseball</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Baseballe</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/ballonfoot.png">
-      </ion-avatar>
-      <ion-label>Football</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Football</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/ballonfoot.png">
-      </ion-avatar>
-      <ion-label>Football</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Football</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/baseballe-removebg.png">
-      </ion-avatar>
-      <ion-label>Baseball</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Baseball</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/tennis-removebg.png">
-      </ion-avatar>
-      <ion-label>Tennis</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Tennis</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
-  <div class="publication">
-    <!-- "ion-lines=none" pour enlever la line -->
-    <ion-item lines="none" no-padding>
-      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
-    * l'on veut le mettre au debut de notre "ion-item""-->
-      <ion-avatar slot="start">
-        <img src="../../assets/divers-removebg.png">
-      </ion-avatar>
-      <ion-label>Divers</ion-label>
-    </ion-item>
-
-    <img class="post_img" src="../../assets/shapes.svg">
-
-    <div class="flex-button">
-      <div>
-        <ion-icon name="heart"></ion-icon>
-        <ion-icon name="text"></ion-icon>
-        <ion-icon name="send"></ion-icon>
-      </div>
-      <ion-icon name="bookmark"></ion-icon>
-    </div>
-
-    <p class="insta-text"><b>2.875 Likes</b></p>
-    <p class="insta-text"><b>Divers</b> Lorem ipsum dolor sit amet
-      consectetur adipisicing elit. Nostrum harum assumenda, odit,
-      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
-      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
-  </div>
-  <br>
 
 
 </ion-content>
