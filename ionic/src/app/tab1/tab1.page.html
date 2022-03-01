@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-row>
+          <ion-button shape="round" [routerLink]="['/connexion']" id="connexion">Connexion</ion-button>
+          <ion-button shape="round" [routerLink]="['/inscription']" id="inscription">Inscription</ion-button>
+        </ion-row>
+      </ion-col>
+
+      <ion-col>
+        <ion-title class="ion-text-center">
+          <img src="../assets/logo.png">
+        </ion-title>
+      </ion-col>
+
+      <ion-col>
+        <ion-button shape="round" [routerLink]="['/filtre']" id="filtre">Filtre</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="publication" *ngFor="let article of articles.data">
+    <!-- "ion-lines=none" pour enlever la line -->
+    <ion-item lines="none" no-padding>
+      <!-- "ion-avatar" pour mettre l'avatar, "slot="start" pour dire que *
+    * l'on veut le mettre au debut de notre "ion-item""-->
+      <ion-avatar slot="start">
+        <img src="../../assets/ballonbasket.png">
+      </ion-avatar>
+      <ion-label>{{article.attributes?.titre}}</ion-label>
+    </ion-item>
+
+    <img class="post_img" src="http://localhost:1337{{article.attributes?.image.data[0].attributes.url}}">
+
+    <div class="flex-button">
+      <div>
+        <ion-icon name="heart"></ion-icon>
+        <ion-icon name="text"></ion-icon>
+        <ion-icon name="send"></ion-icon>
+      </div>
+      <ion-icon name="bookmark"></ion-icon>
+    </div>
+    <div class="hidden">
+      <ion-accordion-group>
+        <ion-accordion value="colors">
+          <ion-item slot="header">
+            <h1>Lire l'article</h1>
+          </ion-item>
+
+          <ion-list slot="content">
+            <div>
+              {{article.attributes?.description}}
+            </div>
+
+          </ion-list>
+        </ion-accordion>
+      </ion-accordion-group>
+    </div>
+    <p class="insta-text"><b>2.875 Likes</b></p>
+    <p class="insta-text"><b>Basket ball</b> Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Nostrum harum assumenda, odit,
+      explicabo vero beatae minima id cupiditate, ex perspiciatis ipsam
+      odio fugit et facere quasi veritatis est! Ipsam, architecto.</p>
+
+
+  </div>
+  <br>
+
+
+
+
+
+</ion-content>
